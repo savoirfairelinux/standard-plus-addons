@@ -48,6 +48,11 @@ class StandardPlusIssue(models.Model):
                "('application', '=', True)]",
     )
 
+    model_id = fields.Many2one(
+        string='Object',
+        comodel_name='ir.model',
+    )
+
     user_id = fields.Many2one(
         string="User",
         comodel_name='res.users',
@@ -63,11 +68,11 @@ class StandardPlusIssue(models.Model):
         default='2',
     )
 
-    observed_behavior = fields.Text(
+    description_before = fields.Text(
         string='Description of the Observed Behavior',
     )
 
-    desired_behavior = fields.Text(
+    description_after = fields.Text(
         string='Description of the Desired Behavior',
     )
 
@@ -137,12 +142,17 @@ class StandardPlusIssue(models.Model):
         self.state = 'escalated'
 
     @api.multi
-    def action_set_submitted(self):
+    def action_set_submitted(
+            self, context=None,
+            template_ref=(
+                'standard_plus_issue.email_template_standard_plus_issue'
+            )
+    ):
         """
         Change the state to 'submitted' and send email
         """
         self.ensure_one()
-        self.action_send_by_email()
+        self.send_by_email(self.prepare_mail_attachments(), template_ref)
         self.state = 'submitted'
 
     @api.multi
@@ -162,28 +172,32 @@ class StandardPlusIssue(models.Model):
         self.state = 'rejected'
 
     @api.multi
-    def action_send_by_email(self):
+    def send_by_email(self, attachment_ids, template_ref):
         """
         Send the issue by email to the support
         """
         self.ensure_one()
-        template = self.env.ref(
-            'standard_plus_issue.email_template_standard_plus_issue',
-        )
-        AttachmentObj = self.env['ir.attachment']
+        template = self.env.ref(template_ref)
         vals = {
-            'attachment_ids': [],
+            'attachment_ids': attachment_ids,
             'email_to': self.property_support_email,
         }
-        attachments = []
+        template.send_mail(self.id, force_send=True, email_values=vals)
+        self.env['ir.attachment'].browse(attachment_ids).unlink()
+
+    @api.multi
+    def prepare_mail_attachments(self):
+        """
+        Add the screenshots to the attachments to be sent by email
+        """
+        self.ensure_one()
+        AttachmentObj = self.env['ir.attachment']
+        attachment_ids = []
         for screenshot in self.screenshot_ids:
             attachment = AttachmentObj.create({
                 'datas': screenshot.screenshot,
                 'datas_fname': screenshot.filename,
                 'name': screenshot.filename,
             })
-            attachments.append(attachment)
-            vals['attachment_ids'].append(attachment.id)
-        template.send_mail(self.id, force_send=True, email_values=vals)
-        for attachment in attachments:
-            attachment.unlink()
+            attachment_ids.append(attachment.id)
+        return attachment_ids

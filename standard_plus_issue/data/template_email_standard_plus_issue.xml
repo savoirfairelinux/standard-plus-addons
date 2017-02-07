@@ -24,8 +24,8 @@
         <p>
           <strong>Description of the observed behavior:</strong>
           <br>
-          % if object.observed_behavior:
-            ${object.observed_behavior}
+          % if object.description_before:
+            ${object.description_before}
           % else:
             left blank
           % endif
@@ -33,8 +33,8 @@
         <p>
           <strong>Description of the desired behavior:</strong>
           <br>
-            % if object.desired_behavior:
-          ${object.desired_behavior}
+          % if object.description_after:
+            ${object.description_after}
           % else:
             left blank
           % endif

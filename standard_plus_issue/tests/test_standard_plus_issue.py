@@ -13,6 +13,7 @@ class TestStandardPlusIssue(TransactionCase):
 
         self.IssueObj = self.env['standard.plus.issue']
         self.ScreenshotObj = self.env['issue.screenshot']
+        self.AttachmentObj = self.env['ir.attachment']
 
         self.screenshot = self.ScreenshotObj.create({
             'filename': 'screenshot.jpg',
@@ -53,9 +54,11 @@ class TestStandardPlusIssue(TransactionCase):
         self.assertEqual(self.issue.state, 'escalated')
 
     def test_action_set_submitted(self):
+        attachment_count = self.AttachmentObj.search_count([])
         self.assertEqual(self.issue.state, 'draft')
         self.issue.action_set_submitted()
         self.assertEqual(self.issue.state, 'submitted')
+        self.assertEqual(attachment_count, self.AttachmentObj.search_count([]))
 
     def test_action_set_addressed(self):
         self.assertEqual(self.issue.state, 'draft')
@@ -66,3 +69,11 @@ class TestStandardPlusIssue(TransactionCase):
         self.assertEqual(self.issue.state, 'draft')
         self.issue.action_set_rejected()
         self.assertEqual(self.issue.state, 'rejected')
+
+    def test_prepare_mail_attachments(self):
+        attachment_count = self.AttachmentObj.search_count([])
+        self.issue.prepare_mail_attachments()
+        self.assertEqual(
+            attachment_count + len(self.issue.screenshot_ids),
+            self.AttachmentObj.search_count([])
+        )
