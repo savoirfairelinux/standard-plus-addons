@@ -3,8 +3,8 @@
 
   <t t-name="standard_plus_issue.sfl_support">
     <li>
-      <a href="#" title="Savoir-faire Linux Support">
-        <img src="/standard_plus_issue/static/description/sfl_logo.png"/>
+      <a href="#" title="Support">
+        <img src="/standard_plus_issue/static/img/sfl_logo.png"/>
       </a>
     </li>
   </t>

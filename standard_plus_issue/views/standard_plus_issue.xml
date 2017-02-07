@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="standard_plus_issue_form" model="ir.ui.view">
+      <field name="name">standard.plus.issue.form</field>
+      <field name="model">standard.plus.issue</field>
+      <field name="arch" type="xml">
+        <form string="Standard+ Issue">
+          <header>
+            <button name="action_set_escalated" type="object" string="Submit" attrs="{'invisible': ['|', ('state', '!=', 'draft'), ('type', 'in', ['studio', 'aeroo'])]}"/>
+            <button
+              name="action_set_submitted"
+              type="object" string="Submit"
+              attrs="{'invisible': ['|', '&amp;', ('state', '!=', 'draft'), ('type', 'in', ['studio', 'aeroo']), '&amp;', ('state', '!=', 'escalated'), ('type', 'not in', ['studio', 'aeroo'])]}"
+            />
+            <button name="action_set_rejected" type="object" string="Mark Rejected" states="submitted"/>
+            <button name="action_set_addressed" type="object" string="Mark Solved" states="submitted"/>
+            <field name="state" readonly="1" widget="statusbar" statusbar_visible="draft,escalated,submitted,addressed"/>
+          </header>
+          <sheet>
+            <h1>
+              <field name="name" readonly="1" class="oe_inline"/>
+            </h1>
+            <group>
+              <group>
+                <field name="type"/>
+                <field name="module_id" attrs="{'invisible': [('type', 'in', ['studio', 'aeroo'])]}"/>
+                <field name="model_id" attrs="{'invisible': [('type', 'not in', ['studio', 'aeroo'])]}"/>
+              </group>
+              <group>
+                <field name="user_id"/>
+                <field name="priority" widget="priority"/>
+              </group>
+            </group>
+            <label for="description_before" string="Description of the Observed Behavior" attrs="{'invisible': [('type', 'in', ['studio', 'aeroo'])]}"/>
+            <group>
+              <field name="description_before" nolabel="1"/>
+            </group>
+            <label for="description_after" string="Description of the Desired Behavior" attrs="{'invisible': [('type', 'in', ['studio', 'aeroo'])]}"/>
+            <group>
+              <field name="description_after" nolabel="1"/>
+            </group>
+            <notebook>
+              <page name="screenshots" string="Screenshots">
+                <field name="screenshot_ids">
+                  <tree editable="bottom">
+                    <field name="filename" invisible="1"/>
+                    <field name="screenshot" widget="binary" filename="filename" />
+                    <field name="comment"/>
+                  </tree>
+                </field>
+                <div>
+                  <field name="no_screenshot"/>
+                  <em> I do not want to join a screenshot and understand that it may impact the processing of the request.</em>
+                </div>
+              </page>
+              <page string="Notes">
+                <group>
+                  <field name="notes"/>
+                </group>
+              </page>
+            </notebook>
+          </sheet>
+          <div class="oe_chatter">
+            <field name="message_follower_ids" widget="mail_followers"/>
+            <field name="message_ids" widget="mail_thread"/>
+          </div>
+        </form>
+      </field>
+    </record>
+
+    <record id="standard_plus_issue_tree" model="ir.ui.view">
+      <field name="name">standard.plus.issue.tree</field>
+      <field name="model">standard.plus.issue</field>
+      <field name="arch" type="xml">
+        <tree string="Issues">
+          <field name="type"/>
+          <field name="name"/>
+          <field name="user_id"/>
+          <field name="priority"/>
+          <field name="state"/>
+        </tree>
+      </field>
+    </record>
+
+    <menuitem id="menu_standard_plus_issue"
+              parent="base.menu_custom"
+              name="Standard+ Issue"
+              sequence="16"/>
+
+    <menuitem id="menu_standard_plus_issue_sub"
+              parent="menu_standard_plus_issue"
+              action="action_standard_plus_issue"/>
+
+    <record id="action_standard_plus_issue" model="ir.actions.act_window">
+      <field name="name">Issues</field>
+      <field name="res_model">standard.plus.issue</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+  </data>
+</odoo>

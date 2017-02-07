@@ -6,20 +6,458 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-16 12:24-0500\n"
-"PO-Revision-Date: 2017-01-16 12:24-0500\n"
+"POT-Creation-Date: 2017-01-26 21:51-0500\n"
+"PO-Revision-Date: 2017-01-26 21:55-0500\n"
+"Last-Translator: Julie Moussu <julie.moussu@savoirfairelinux.com>\n"
 "Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.8.7.1\n"
-"Last-Translator: Julie Moussu <julie.moussu@savoirfairelinux.com>\n"
-"Language: fr\n"
 
 #. module: standard_plus_issue
-#. openerp-web
-#: code:addons/standard_plus_issue/static/src/xml/systray.xml:6
+#: model:mail.template,body_html:standard_plus_issue.email_template_standard_plus_issue
+msgid ""
+"\n"
+"        <h3>Request ${object.name}</h3>\n"
+"        <p>\n"
+"          A request of type <strong>${object.type}</strong> for project "
+"${object.user_id.company_id.name} has been submitted by ${(object.user_id."
+"name)} with a level '${object.priority}' priority.\n"
+"        </p>\n"
+"        <p>\n"
+"          <strong>Concerned module:</strong>\n"
+"          % if object.module_id.name:\n"
+"            ${object.module_id.name}\n"
+"          % else:\n"
+"            left blank\n"
+"          % endif\n"
+"        </p>\n"
+"        <p>\n"
+"          <strong>Description of the observed behavior:</strong>\n"
+"          <br>\n"
+"          % if object.description_before:\n"
+"            ${object.description_before}\n"
+"          % else:\n"
+"            left blank\n"
+"          % endif\n"
+"        </p>\n"
+"        <p>\n"
+"          <strong>Description of the desired behavior:</strong>\n"
+"          <br>\n"
+"          % if object.description_after:\n"
+"            ${object.description_after}\n"
+"          % else:\n"
+"            left blank\n"
+"          % endif\n"
+"        </p>\n"
+"        <p>\n"
+"          % if object.screenshot_ids:\n"
+"            <strong>Additional notes:</strong>\n"
+"            % for screenshot in object.screenshot_ids:\n"
+"              % if screenshot.comment:\n"
+"                <br>\n"
+"                <strong>${screenshot.filename}:</strong> ${screenshot."
+"comment}\n"
+"              % endif\n"
+"            % endfor\n"
+"          % endif\n"
+"        </p>\n"
+"        <p>\n"
+"          ${object.issue_url}\n"
+"        </p>\n"
+"        "
+msgstr ""
+"\n"
+"<h3>Demande ${object.name}</h3>\n"
+"        <p>\n"
+"          Une demande de type <strong>${object.type}</strong> concernant "
+"le projet ${object.user_id.company_id.name} a été effectuée par "
+"l'utilisateur ${(object.user_id.name)} avec une priorité de niveau ${object."
+"priority}.\n"
+"        </p>\n"
+"        <p>\n"
+"          <strong>Module concerné:</strong>\n"
+"          % if object.module_id.name:\n"
+"          ${object.module_id.name}\n"
+"          % else:\n"
+"          non renseigné\n"
+"          % endif\n"
+"        </p>\n"
+"        <p>\n"
+"          <strong>Description du comportement observé:</strong>\n"
+"          <br>\n"
+"          % if object.description_before:\n"
+"          ${object.description_before}\n"
+"          % else:\n"
+"          non renseigné\n"
+"          % endif\n"
+"        </p>\n"
+"        <p>\n"
+"          <strong>Description du comportement désiré:</strong>\n"
+"          <br>\n"
+"          % if object.description_after:\n"
+"          ${object.description_after}\n"
+"          % else:\n"
+"          non renseigné\n"
+"          % endif\n"
+"        </p>\n"
+"<p>\n"
+"        % if object.screenshot_ids:\n"
+"        <strong>Notes additionnelles:</strong>\n"
+"        % for screenshot in object.screenshot_ids:\n"
+"          % if screenshot.comment:\n"
+"          <br>\n"
+"          <strong>${screenshot.filename}:</strong> ${screenshot.comment}\n"
+"          % endif\n"
+"       % endfor\n"
+"       % endif\n"
+"        </p>\n"
+"        <p>\n"
+"           ${object.issue_url}\n"
+"        </p>\n"
+"        "
+
+#. module: standard_plus_issue
+#: model:ir.model,name:standard_plus_issue.model_standard_plus_issue
+msgid ""
+"\n"
+"    Standard+ Issue\n"
+"    "
+msgstr ""
+"\n"
+"    Standard+ Issue\n"
+"    "
+
+#. module: standard_plus_issue
+#: model:ir.ui.view,arch_db:standard_plus_issue.standard_plus_issue_form
+msgid ""
+"<em> I do not want to join a screenshot and understand that it may impact "
+"the processing of the request.</em>"
+msgstr ""
+"<em> Je ne désire pas joindre de capture d'écran et comprends que cela "
+"pourra impacter le traitement de la demande.</em>"
+
+#. module: standard_plus_issue
+#: selection:standard.plus.issue,state:0
+msgid "Addressed"
+msgstr "Traité"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_comment
+msgid "Comment"
+msgstr "Commentaire"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_create_date
+msgid "Created on"
+msgstr ""
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_desired_behavior
+msgid "Description of the Desired Behavior"
+msgstr "Description du comportement désiré"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_observed_behavior
+msgid "Description of the Observed Behavior"
+msgstr "Description du comportement observé"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_display_name
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: standard_plus_issue
+#: selection:standard.plus.issue,state:0
+msgid "Draft"
+msgstr "Brouillon"
+
+#. module: standard_plus_issue
+#: selection:standard.plus.issue,state:0
+msgid "Escalated"
+msgstr "Escaladé"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_filename
+msgid "Filename"
+msgstr "Nom du fichier"
+
+#. module: standard_plus_issue
+#: selection:standard.plus.issue,priority:0
+msgid "High"
+msgstr "Élevée"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_id
+msgid "ID"
+msgstr ""
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_issue_id
+msgid "Issue id"
+msgstr ""
+
+#. module: standard_plus_issue
+#: model:ir.ui.view,arch_db:standard_plus_issue.standard_plus_issue_tree
+msgid "Issues"
+msgstr "Demandes"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot___last_update
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue___last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: standard_plus_issue
+#: selection:standard.plus.issue,priority:0
+msgid "Low"
+msgstr "Basse"
+
+#. module: standard_plus_issue
+#: model:ir.ui.view,arch_db:standard_plus_issue.standard_plus_issue_form
+msgid "Mark Rejected"
+msgstr "Demande refusée"
+
+#. module: standard_plus_issue
+#: model:ir.ui.view,arch_db:standard_plus_issue.standard_plus_issue_form
+msgid "Mark Solved"
+msgstr "Demande traitée"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_module_id
+msgid "Module"
+msgstr "Module"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_no_screenshot
+msgid "No screenshot"
+msgstr "Pas de capture d'écran"
+
+#. module: standard_plus_issue
+#: selection:standard.plus.issue,priority:0
+msgid "Normal"
+msgstr "Normale"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_notes
+#: model:ir.ui.view,arch_db:standard_plus_issue.standard_plus_issue_form
+msgid "Notes"
+msgstr "Notes"
+
+#. module: standard_plus_issue
+#: code:addons/standard_plus_issue/models/standard_plus_issue.py:113
 #, python-format
-msgid "Savoir-faire Linux Support"
-msgstr "Support Savoir-faire Linux"
+msgid "Please join a screenshot."
+msgstr "Veuillez joindre une capture d'écran."
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_priority
+msgid "Priority"
+msgstr "Priorité"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_name
+msgid "Reference"
+msgstr "Référence"
+
+#. module: standard_plus_issue
+#: selection:standard.plus.issue,state:0
+msgid "Rejected"
+msgstr "Refusé"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_screenshot
+msgid "Screenshot"
+msgstr "Capture d'écran"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_screenshot_ids
+#: model:ir.ui.view,arch_db:standard_plus_issue.standard_plus_issue_form
+msgid "Screenshots"
+msgstr "Captures d'écran"
+
+#. module: standard_plus_issue
+#: model:ir.ui.view,arch_db:standard_plus_issue.standard_plus_issue_form
+msgid "Standard+ Issue"
+msgstr "Demande Standard+"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_state
+msgid "State"
+msgstr "État"
+
+#. module: standard_plus_issue
+#: model:ir.ui.view,arch_db:standard_plus_issue.standard_plus_issue_form
+msgid "Submit"
+msgstr "Soumettre"
+
+#. module: standard_plus_issue
+#: selection:standard.plus.issue,state:0
+msgid "Submitted"
+msgstr "Soumis"
+
+#. module: standard_plus_issue
+#: selection:standard.plus.issue,type:0
+msgid "Support"
+msgstr "Support"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_property_support_email
+msgid "Support Email Address"
+msgstr "Adresse couriel du support"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_type
+msgid "Type"
+msgstr "Type"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_issue_url
+msgid "URL of the Issue"
+msgstr "URL de la demande"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_user_id
+msgid "User"
+msgstr "Utilisateur"
+
+#. module: standard_plus_issue
+#: selection:standard.plus.issue,priority:0
+msgid "Very Low"
+msgstr "Très basse"
+
+#. module: standard_plus_issue
+#: model:mail.template,subject:standard_plus_issue.email_template_standard_plus_issue
+msgid ""
+"[${object.user_id.company_id.name}] | ${object.name} | Request: ${object."
+"type} | Priority: ${object.priority}"
+msgstr ""
+"[${object.user_id.company_id.name}] | ${object.name} | Demande: ${object."
+"type} | Priorité: ${object.priority}"
+
+#. module: standard_plus_issue
+#: model:ir.model,name:standard_plus_issue.model_ir_attachment
+msgid "ir.attachment"
+msgstr ""
+
+#. module: standard_plus_issue
+#: model:ir.model,name:standard_plus_issue.model_issue_screenshot
+msgid "issue.screenshot"
+msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "        <h3>Request ${object.name}</h3>\n"
+#~ "        <p>\n"
+#~ "          A request of type <strong>${object.type}</strong> for project "
+#~ "${object.user_id.company_id.name} has been submitted by ${(object.user_id."
+#~ "name)} with a priority level ${object.priority}.\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          <strong>Concerned module:</strong>\n"
+#~ "          % if object.module_id.name:\n"
+#~ "          ${object.module_id.name}\n"
+#~ "          % else:\n"
+#~ "          unknown\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          <strong>Description of the observed behavior:</strong>\n"
+#~ "          <br>\n"
+#~ "          % if object.observed_behavior:\n"
+#~ "          ${object.observed_behavior}\n"
+#~ "          % else:\n"
+#~ "          unknown\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          <strong>Description of the desired behavior:</strong>\n"
+#~ "          <br>\n"
+#~ "          % if object.desired_behavior:\n"
+#~ "          ${object.desired_behavior}\n"
+#~ "          % else:\n"
+#~ "          unknown\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        % if object.screenshot_ids:\n"
+#~ "        <strong>Additional notes:</strong>\n"
+#~ "        % for screenshot in object.screenshot_ids:\n"
+#~ "          % if screenshot.comment:\n"
+#~ "          <br>\n"
+#~ "          <strong>${screenshot.filename}:</strong> ${screenshot.comment}\n"
+#~ "          % endif\n"
+#~ "       % endfor\n"
+#~ "       % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "           ${object.issue_url}\n"
+#~ "        </p>\n"
+#~ "        "
+#~ msgstr ""
+#~ "\n"
+#~ "<h3>Demande ${object.name}</h3>\n"
+#~ "        <p>\n"
+#~ "          Une demande de type <strong>${object.type}</strong> concernant "
+#~ "le projet ${object.user_id.company_id.name} a été effectuée par "
+#~ "l'utilisateur ${(object.user_id.name)} avec une priorité de niveau "
+#~ "${object.priority}.\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          <strong>Module concerné:</strong>\n"
+#~ "          % if object.module_id.name:\n"
+#~ "          ${object.module_id.name}\n"
+#~ "          % else:\n"
+#~ "          non renseigné\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          <strong>Description du comportement observé:</strong>\n"
+#~ "          <br>\n"
+#~ "          % if object.observed_behavior:\n"
+#~ "          ${object.observed_behavior}\n"
+#~ "          % else:\n"
+#~ "          non renseigné\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          <strong>Description du comportement désiré:</strong>\n"
+#~ "          <br>\n"
+#~ "          % if object.desired_behavior:\n"
+#~ "          ${object.desired_behavior}\n"
+#~ "          % else:\n"
+#~ "          non renseigné\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        % if object.screenshot_ids:\n"
+#~ "        <strong>Notes additionnelles:</strong>\n"
+#~ "        % for screenshot in object.screenshot_ids:\n"
+#~ "          % if screenshot.comment:\n"
+#~ "          <br>\n"
+#~ "          <strong>${screenshot.filename}:</strong> ${screenshot.comment}\n"
+#~ "          % endif\n"
+#~ "       % endfor\n"
+#~ "       % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "           ${object.issue_url}\n"
+#~ "        </p>\n"
+#~ "        "

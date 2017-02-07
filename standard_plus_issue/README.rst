@@ -1,8 +1,11 @@
 Standard+ Issue
 ===============
-This module allows to contact Savoir-faire Linux via the SFL icon on the
-navigation bar, for support as well as Studio and Aeroo requests.
-
+This module allows users to submit their Odoo issues to your technical support
+services, via an icon ('/static/img/sfl_logo.png') in the navigation bar.
+The user describes the issue and join screenshots. The request is then emailed
+to you.
+Replace 'support@support.com' in '/data/ir_property_support_email.xml' with
+your support email address.
 
 Contributors
 ------------

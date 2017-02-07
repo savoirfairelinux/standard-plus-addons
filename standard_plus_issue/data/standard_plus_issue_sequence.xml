@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="standard_plus_issue_sequence" model="ir.sequence">
+      <field name="name">Standard Plus Issue Ref</field>
+      <field name="code">standard.plus.issue</field>
+      <field name="prefix">SU</field>
+      <field name="padding">3</field>
+    </record>
+
+  </data>
+</odoo>
