@@ -9,16 +9,22 @@
     'maintainer': 'Savoir-faire Linux',
     'website': 'http://www.savoirfairelinux.com',
     'license': 'LGPL-3',
-    'category': 'Others',
+    'category': 'Helpdesk',
     'summary': 'Standard+ Issue',
     'depends': [
-        'web'
+        'web',
+        'document',
+        'mail',
     ],
     'external_dependencies': {
         'python': [],
     },
     'data': [
+        'data/ir_property_support_email.xml',
+        'data/standard_plus_issue_sequence.xml',
+        'data/template_email_standard_plus_issue.xml',
         'views/standard_plus_issue_templates.xml',
+        'views/standard_plus_issue.xml',
     ],
     'images': [
         'static/img/sfl_logo.png',

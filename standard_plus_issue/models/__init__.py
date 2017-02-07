@@ -2,4 +2,5 @@
 # © 2017 Savoir-faire Linux
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from . import models
+from . import standard_plus_issue
+from . import issue_screenshot
