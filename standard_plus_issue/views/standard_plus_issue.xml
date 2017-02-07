@@ -70,5 +70,35 @@
       </field>
     </record>
 
+    <record id="standard_plus_issue_tree" model="ir.ui.view">
+      <field name="name">standard.plus.issue.tree</field>
+      <field name="model">standard.plus.issue</field>
+      <field name="arch" type="xml">
+        <tree string="Issues">
+          <field name="type"/>
+          <field name="name"/>
+          <field name="user_id"/>
+          <field name="priority"/>
+          <field name="state"/>
+        </tree>
+      </field>
+    </record>
+
+    <menuitem id="menu_standard_plus_issue"
+              parent="base.menu_custom"
+              name="Standard+ Issue"
+              sequence="16"/>
+
+    <menuitem id="menu_standard_plus_issue_sub"
+              parent="menu_standard_plus_issue"
+              action="action_standard_plus_issue"/>
+
+    <record id="action_standard_plus_issue" model="ir.actions.act_window">
+      <field name="name">Issues</field>
+      <field name="res_model">standard.plus.issue</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
   </data>
 </odoo>
