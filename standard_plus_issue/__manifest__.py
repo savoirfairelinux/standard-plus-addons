@@ -23,11 +23,13 @@
         'data/ir_property_support_email.xml',
         'data/standard_plus_issue_sequence.xml',
         'data/template_email_standard_plus_issue.xml',
+        'security/ir.model.access.csv',
         'views/standard_plus_issue_templates.xml',
         'views/standard_plus_issue.xml',
     ],
     'images': [
         'static/img/sfl_logo.png',
+        'static/img/test_image.png',
     ],
     'js': [
         'static/src/js/systray.js'
