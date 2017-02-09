@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_standard_plus_issue,access_standard_plus_issue,model_standard_plus_issue,,1,1,1,1
+access_issue_screenshot,access_issue_screenshot,model_issue_screenshot,,1,1,1,1

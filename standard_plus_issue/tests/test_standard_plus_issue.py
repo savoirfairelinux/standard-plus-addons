@@ -2,6 +2,9 @@
 # © 2017 Savoir-faire Linux
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
+import base64
+import os
+
 from openerp.tests import TransactionCase
 from odoo.exceptions import ValidationError
 
@@ -15,8 +18,14 @@ class TestStandardPlusIssue(TransactionCase):
         self.ScreenshotObj = self.env['issue.screenshot']
         self.AttachmentObj = self.env['ir.attachment']
 
+        here = os.path.abspath(os.path.dirname(__file__))
+        image_path = os.path.join(here, "../static/img/test_image.png")
+        with open(image_path, "rb") as image_file:
+            encoded_image = base64.b64encode(image_file.read())
+
         self.screenshot = self.ScreenshotObj.create({
             'filename': 'screenshot.jpg',
+            'screenshot': encoded_image,
         })
 
         self.issue = self.IssueObj.create({

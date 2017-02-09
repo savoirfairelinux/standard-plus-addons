@@ -30,6 +30,7 @@ class StandardPlusIssue(models.Model):
         ],
         default='draft',
         required=True,
+        readonly=True,
     )
 
     type = fields.Selection(

@@ -84,6 +84,13 @@
       </field>
     </record>
 
+    <record id="action_standard_plus_issue" model="ir.actions.act_window">
+      <field name="name">Issues</field>
+      <field name="res_model">standard.plus.issue</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
     <menuitem id="menu_standard_plus_issue"
               parent="base.menu_custom"
               name="Standard+ Issue"
@@ -92,13 +99,6 @@
     <menuitem id="menu_standard_plus_issue_sub"
               parent="menu_standard_plus_issue"
               action="action_standard_plus_issue"/>
-
-    <record id="action_standard_plus_issue" model="ir.actions.act_window">
-      <field name="name">Issues</field>
-      <field name="res_model">standard.plus.issue</field>
-      <field name="view_type">form</field>
-      <field name="view_mode">tree,form</field>
-    </record>
 
   </data>
 </odoo>
