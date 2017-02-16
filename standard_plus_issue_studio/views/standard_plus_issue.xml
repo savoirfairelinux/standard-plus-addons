@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="standard_plus_issue_studio_form">
+      <field name="name">standard.plus.issue.studio.form</field>
+      <field name="model">standard.plus.issue</field>
+      <field name="inherit_id" ref="standard_plus_issue.standard_plus_issue_form"/>
+      <field name="arch" type="xml">
+        <group name="description_before" position="before">
+          <group attrs="{'invisible': [('type', '!=', 'studio')]}">
+            <label for="description_before" string="Description of the Need"/>
+          </group>
+        </group>
+        <group name="description_after" position="before">
+          <group attrs="{'invisible': [('type', '!=', 'studio')]}">
+            <label for="description_after" string="Description of the Modifications"/>
+          </group>
+        </group>
+        <notebook position="inside">
+          <page string="Studio Modification" attrs="{'invisible': [('type', '!=', 'studio')]}">
+            <group>
+              <field name="studio_module_filename" invisible="1"/>
+              <field name="studio_module" filename="studio_module_filename"/>
+              <field name="studio_retrieval_date"/>
+            </group>
+          </page>
+        </notebook>
+      </field>
+    </record>
+
+  </data>
+</odoo>
