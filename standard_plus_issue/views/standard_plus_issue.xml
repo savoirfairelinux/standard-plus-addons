@@ -8,12 +8,10 @@
       <field name="arch" type="xml">
         <form string="Standard+ Issue">
           <header>
-            <button name="action_set_escalated" type="object" string="Submit" attrs="{'invisible': ['|', ('state', '!=', 'draft'), ('type', 'in', ['studio', 'aeroo'])]}"/>
-            <button
-              name="action_set_submitted"
-              type="object" string="Submit"
-              attrs="{'invisible': ['|', '&amp;', ('state', '!=', 'draft'), ('type', 'in', ['studio', 'aeroo']), '&amp;', ('state', '!=', 'escalated'), ('type', 'not in', ['studio', 'aeroo'])]}"
-            />
+            <button name="action_set_escalated" type="object" string="Submit"
+                    attrs="{'invisible': ['|', ('state', '!=', 'draft'), ('type', '!=', 'support')]}"/>
+            <button name="action_set_submitted" type="object" string="Submit"
+                    attrs="{'invisible': ['|', '&amp;', ('state', '!=', 'draft'), ('type', '!=', 'support'), '&amp;', ('state', '!=', 'escalated'), ('type', '=', 'support')]}"/>
             <button name="action_set_rejected" type="object" string="Mark Rejected" states="submitted"/>
             <button name="action_set_addressed" type="object" string="Mark Solved" states="submitted"/>
             <field name="state" readonly="1" widget="statusbar" statusbar_visible="draft,escalated,submitted,addressed"/>
@@ -22,24 +20,32 @@
             <h1>
               <field name="name" readonly="1" class="oe_inline"/>
             </h1>
-            <group>
+            <group name="main">
               <group>
                 <field name="type"/>
-                <field name="module_id" attrs="{'invisible': [('type', 'in', ['studio', 'aeroo'])]}"/>
-                <field name="model_id" attrs="{'invisible': [('type', 'not in', ['studio', 'aeroo'])]}"/>
+                <field name="module_id" attrs="{'invisible': [('type', '!=', 'support')]}"/>
+                <field name="model_id" attrs="{'invisible': [('type', '=', 'support')]}"/>
               </group>
               <group>
                 <field name="user_id"/>
                 <field name="priority" widget="priority"/>
               </group>
             </group>
-            <label for="description_before" string="Description of the Observed Behavior" attrs="{'invisible': [('type', 'in', ['studio', 'aeroo'])]}"/>
-            <group>
-              <field name="description_before" nolabel="1"/>
+            <group col="8">
+              <group colspan="1" attrs="{'invisible': [('type', '!=', 'support')]}">
+                <label for="description_before" string="Description of the Observed Behavior"/>
+              </group>
+              <group name="description_before" colspan="7">
+                <field name="description_before" nolabel="1"/>
+              </group>
             </group>
-            <label for="description_after" string="Description of the Desired Behavior" attrs="{'invisible': [('type', 'in', ['studio', 'aeroo'])]}"/>
-            <group>
-              <field name="description_after" nolabel="1"/>
+            <group col="8">
+              <group colspan="1" attrs="{'invisible': [('type', '!=', 'support')]}">
+                <label for="description_after" string="Description of the Desired Behavior"/>
+              </group>
+              <group name="description_after" colspan="7">
+                <field name="description_after" nolabel="1"/>
+              </group>
             </group>
             <notebook>
               <page name="screenshots" string="Screenshots">
