@@ -1,0 +1,408 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* standard_plus_issue_aeroo
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-02-10 18:40-0500\n"
+"PO-Revision-Date: 2017-02-10 19:03-0500\n"
+"Last-Translator: Julie Moussu <julie.moussu@savoirfairelinux.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#. module: standard_plus_issue_aeroo
+#: model:mail.template,body_html:standard_plus_issue_aeroo.email_template_standard_plus_issue_aeroo
+msgid ""
+"\n"
+"        <h3>Request ${object.name}</h3>\n"
+"        <p>\n"
+"          A request of type <strong>${object.type}</strong> for project "
+"${object.user_id.company_id.name} has been submitted by ${(object.user_id."
+"name)} with a level '${object.priority}' priority.\n"
+"        </p>\n"
+"        <p>\n"
+"          <strong>Concerned model:</strong>\n"
+"          % if object.model_id.model:\n"
+"            ${object.model_id.model}\n"
+"          % else:\n"
+"            left blank\n"
+"          % endif\n"
+"        </p>\n"
+"        <p>\n"
+"          <strong>Report Name:</strong> ${object.report_name}\n"
+"        </p>\n"
+"        <p>\n"
+"          <strong>Output Format:</strong> ${object.report_out_format}\n"
+"        </p>\n"
+"        % if object.report_source == 'lang':\n"
+"          <p>\n"
+"            <strong>Languages:</strong>\n"
+"            % for report in object.report_line_ids:\n"
+"                <br>\n"
+"                <strong>${report.filename}:</strong> ${report.lang_id.name}\n"
+"            % endfor\n"
+"          </p>\n"
+"          <p>\n"
+"            <strong>Language Determinant:</strong> ${object."
+"report_lang_determinant}\n"
+"          </p>\n"
+"         % endif\n"
+"        <p>\n"
+"          <strong>Description of the modifications:</strong>\n"
+"          <br>\n"
+"          % if object.description_after:\n"
+"            ${object.description_after}\n"
+"          % else:\n"
+"            left blank\n"
+"          % endif\n"
+"        </p>\n"
+"        <p>\n"
+"          ${object.issue_url}\n"
+"        </p>\n"
+"        "
+msgstr ""
+"\n"
+"        <h3>Demande ${object.name}</h3>\n"
+"        <p>\n"
+"          Une demande de type <strong>${object.type}</strong> concernant le "
+"projet ${object.user_id.company_id.name} a été effectuée par l'utilisateur "
+"${(object.user_id.name)} avec une priorité de niveau ${object.priority}.\n"
+"        </p>\n"
+"        <p>\n"
+"          <strong>Modèle concerné:</strong>\n"
+"          % if object.model_id.model:\n"
+"            ${object.model_id.model}\n"
+"          % else:\n"
+"            non renseigné\n"
+"          % endif\n"
+"        </p>\n"
+"        <p>\n"
+"          <strong>Nom du rapport:</strong> ${object.report_name}\n"
+"        </p>\n"
+"        <p>\n"
+"          <strong>Format de sortie:</strong> ${object.report_out_format}\n"
+"        </p>\n"
+"        % if object.report_source == 'lang':\n"
+"          <p>\n"
+"            <strong>Langues:</strong>\n"
+"            % for report in object.report_line_ids:\n"
+"                <br>\n"
+"                <strong>${report.filename}:</strong> ${report.lang_id.name}\n"
+"            % endfor\n"
+"          </p>\n"
+"          <p>\n"
+"            <strong>Déterminant de la langue:</strong> ${object."
+"report_lang_determinant}\n"
+"          </p>\n"
+"         % endif\n"
+"        <p>\n"
+"          <strong>Description des modifications:</strong>\n"
+"          <br>\n"
+"          % if object.description_after:\n"
+"            ${object.description_after}\n"
+"          % else:\n"
+"            left blank\n"
+"          % endif\n"
+"        </p>\n"
+"        <p>\n"
+"          ${object.issue_url}\n"
+"        </p>\n"
+"        "
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.model,name:standard_plus_issue_aeroo.model_standard_plus_issue
+msgid ""
+"\n"
+"    Standard+ Issue\n"
+"    "
+msgstr ""
+"\n"
+"    Standard+ Issue\n"
+"    "
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.model.fields,field_description:standard_plus_issue_aeroo.field_standard_plus_report_line_create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.model.fields,field_description:standard_plus_issue_aeroo.field_standard_plus_report_line_create_date
+msgid "Created on"
+msgstr ""
+
+#. module: standard_plus_issue_aeroo
+#: selection:standard.plus.issue,report_out_format:0
+msgid "DOC"
+msgstr "DOC"
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.ui.view,arch_db:standard_plus_issue_aeroo.standard_plus_issue_aeroo_form
+msgid "Description of the Modifications"
+msgstr "Description des modifications"
+
+#. module: standard_plus_issue_aeroo
+#: selection:standard.plus.issue,report_source:0
+msgid "Different Template per Language"
+msgstr "Différents modèles par langue"
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.model.fields,field_description:standard_plus_issue_aeroo.field_standard_plus_report_line_display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: standard_plus_issue_aeroo
+#: selection:standard.plus.issue,report_lang_determinant:0
+msgid "Employee"
+msgstr "Employé"
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.model.fields,field_description:standard_plus_issue_aeroo.field_standard_plus_report_line_file
+msgid "File"
+msgstr "Fichier"
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.model.fields,field_description:standard_plus_issue_aeroo.field_standard_plus_report_line_filename
+msgid "File Name"
+msgstr "Nom du fichier"
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.ui.view,arch_db:standard_plus_issue_aeroo.standard_plus_issue_aeroo_form
+msgid "Filename that will be displayed"
+msgstr "Nom du fichier qui s'affichera"
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.model.fields,field_description:standard_plus_issue_aeroo.field_standard_plus_report_line_id
+msgid "ID"
+msgstr ""
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.model.fields,field_description:standard_plus_issue_aeroo.field_standard_plus_report_line_issue_id
+msgid "Issue id"
+msgstr "Issue id"
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.model.fields,field_description:standard_plus_issue_aeroo.field_standard_plus_report_line_lang_id
+msgid "Language"
+msgstr "Langue"
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.model.fields,field_description:standard_plus_issue_aeroo.field_standard_plus_issue_report_lang_determinant
+msgid "Language Determinant"
+msgstr "Déterminant de la langue"
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.model.fields,field_description:standard_plus_issue_aeroo.field_standard_plus_report_line___last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.model.fields,field_description:standard_plus_issue_aeroo.field_standard_plus_report_line_write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.model.fields,field_description:standard_plus_issue_aeroo.field_standard_plus_report_line_write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: standard_plus_issue_aeroo
+#: selection:standard.plus.issue,report_out_format:0
+msgid "ODT"
+msgstr "ODT"
+
+#. module: standard_plus_issue_aeroo
+#: selection:standard.plus.issue,report_source:0
+msgid "One File"
+msgstr "Un fichier"
+
+#. module: standard_plus_issue_aeroo
+#: selection:standard.plus.issue,report_lang_determinant:0
+msgid "Other"
+msgstr "Autre"
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.model.fields,field_description:standard_plus_issue_aeroo.field_standard_plus_issue_report_out_format
+msgid "Output Format"
+msgstr "Format de sortie"
+
+#. module: standard_plus_issue_aeroo
+#: selection:standard.plus.issue,report_out_format:0
+msgid "PDF"
+msgstr "PDF"
+
+#. module: standard_plus_issue_aeroo
+#: selection:standard.plus.issue,report_lang_determinant:0
+msgid "Partner"
+msgstr "Partenaire"
+
+#. module: standard_plus_issue_aeroo
+#: code:addons/standard_plus_issue_aeroo/models/standard_plus_issue.py:80
+#, python-format
+msgid "Please specify a language for each template."
+msgstr "Veuillez spécifier une langue pour chaque modèle."
+
+#. module: standard_plus_issue_aeroo
+#: code:addons/standard_plus_issue_aeroo/models/standard_plus_issue.py:72
+#, python-format
+msgid "Please upload a report template."
+msgstr "Veuillez téléverser un modèle de rapport."
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.model.fields,field_description:standard_plus_issue_aeroo.field_standard_plus_issue_report_name
+msgid "Report Name"
+msgstr "Nom du rapport"
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.model.fields,field_description:standard_plus_issue_aeroo.field_standard_plus_issue_report_source
+msgid "Source Type"
+msgstr "Type de source"
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.model.fields,field_description:standard_plus_issue_aeroo.field_standard_plus_issue_report_line_ids
+msgid "Template by Language"
+msgstr "Modèle par langue"
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.model.fields,help:standard_plus_issue_aeroo.field_standard_plus_issue_report_lang_determinant
+msgid ""
+"Used to determine the language of the record being printed in the report."
+msgstr ""
+"Utilisé pour déterminer la langue de l'objet à imprimer dans le rapport."
+
+#. module: standard_plus_issue_aeroo
+#: model:mail.template,subject:standard_plus_issue_aeroo.email_template_standard_plus_issue_aeroo
+msgid ""
+"[${object.user_id.company_id.name}] | ${object.name} | Request: ${object."
+"type} | Priority: ${object.priority}"
+msgstr ""
+"[${object.user_id.company_id.name}] | ${object.name} | Demande: ${object."
+"type} | Priorité: ${object.priority}"
+
+#. module: standard_plus_issue_aeroo
+#: model:ir.model,name:standard_plus_issue_aeroo.model_standard_plus_report_line
+msgid "standard.plus.report.line"
+msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "        <h3>Request ${object.name}</h3>\n"
+#~ "        <p>\n"
+#~ "          A request of type <strong>${object.type}</strong> for project "
+#~ "${object.user_id.company_id.name} has been submitted by ${(object.user_id."
+#~ "name)} with a level '${object.priority}' priority.\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          <strong>Concerned model:</strong>\n"
+#~ "          % if object.model_id.model:\n"
+#~ "            ${object.model_id.model}\n"
+#~ "          % else:\n"
+#~ "            left blank\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          <strong>Description of the need:</strong>\n"
+#~ "          <br>\n"
+#~ "          % if object.description_before:\n"
+#~ "            ${object.description_before}\n"
+#~ "          % else:\n"
+#~ "            left blank\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          <strong>Description of the modifications:</strong>\n"
+#~ "          <br>\n"
+#~ "          % if object.description_after:\n"
+#~ "            ${object.description_after}\n"
+#~ "          % else:\n"
+#~ "            left blank\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          % if object.screenshot_ids:\n"
+#~ "            <strong>Additional notes:</strong>\n"
+#~ "            % for screenshot in object.screenshot_ids:\n"
+#~ "              % if screenshot.comment:\n"
+#~ "                <br>\n"
+#~ "                <strong>${screenshot.filename}:</strong> ${screenshot."
+#~ "comment}\n"
+#~ "              % endif\n"
+#~ "            % endfor\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          ${object.issue_url}\n"
+#~ "        </p>\n"
+#~ "        "
+#~ msgstr ""
+#~ "\n"
+#~ "        <h3>Demande ${object.name}</h3>\n"
+#~ "        <p>\n"
+#~ "          Une demande de type <strong>${object.type}</strong> concernant "
+#~ "le projet ${object.user_id.company_id.name} a été effectuée par "
+#~ "l'utilisateur ${(object.user_id.name)} avec une priorité de niveau "
+#~ "${object.priority}.\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          <strong>Modèle concerné:</strong>\n"
+#~ "          % if object.model_id.model:\n"
+#~ "            ${object.model_id.model}\n"
+#~ "          % else:\n"
+#~ "            non renseigné\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          <strong>Description du besoin:</strong>\n"
+#~ "          <br>\n"
+#~ "          % if object.description_before:\n"
+#~ "            ${object.description_before}\n"
+#~ "          % else:\n"
+#~ "            non renseigné\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          <strong>Description des modifications:</strong>\n"
+#~ "          <br>\n"
+#~ "          % if object.description_after:\n"
+#~ "            ${object.description_after}\n"
+#~ "          % else:\n"
+#~ "            non renseigné\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          % if object.screenshot_ids:\n"
+#~ "            <strong>Notes additionnelles:</strong>\n"
+#~ "            % for screenshot in object.screenshot_ids:\n"
+#~ "              % if screenshot.comment:\n"
+#~ "                <br>\n"
+#~ "                <strong>${screenshot.filename}:</strong> ${screenshot."
+#~ "comment}\n"
+#~ "              % endif\n"
+#~ "            % endfor\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          ${object.issue_url}\n"
+#~ "        </p>\n"
+#~ "        "
+
+#~ msgid "Custom Module"
+#~ msgstr "Module custom"
+
+#~ msgid "Description of the Need"
+#~ msgstr "Description du besoin"
+
+#~ msgid "Filename"
+#~ msgstr "Nom du fichier"
+
+#~ msgid "Retrieval Date"
+#~ msgstr "Date récupération"
+
+#~ msgid "Studio Modification"
+#~ msgstr "Modification Studio"

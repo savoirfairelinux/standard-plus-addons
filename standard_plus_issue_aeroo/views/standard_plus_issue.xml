@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="standard_plus_issue_aeroo_form">
+      <field name="name">standard.plus.issue.aeroo.form</field>
+      <field name="model">standard.plus.issue</field>
+      <field name="inherit_id" ref="standard_plus_issue.standard_plus_issue_form"/>
+      <field name="arch" type="xml">
+        <group name="main" position="inside">
+          <group attrs="{'invisible': [('type', '!=', 'aeroo')]}">
+            <field name="report_name" placeholder="Filename that will be displayed" attrs="{'required': [('type', '=', 'aeroo')], 'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
+            <field name="report_out_format" attrs="{'required': [('type', '=', 'aeroo')], 'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
+            <field name="report_source" attrs="{'required': [('type', '=', 'aeroo')], 'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
+          </group>
+          <group colspan="2" attrs="{'invisible': [('type', '!=', 'aeroo')]}">
+            <field name="report_line_ids" attrs="{'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}">
+              <tree editable="bottom">
+                <field name="lang_id"/>
+                <field name="filename" invisible="1"/>
+                <field name="file" filename="filename"/>
+              </tree>
+            </field>
+          </group>
+          <group attrs="{'invisible': ['|', ('type', '!=', 'aeroo'), ('report_source', '=', 'file')]}">
+            <field name="report_lang_determinant" attrs="{'required': [('type', '=', 'aeroo'), ('report_source', '=', 'lang')], 'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
+          </group>
+        </group>
+        <group name="description_before" position="attributes">
+          <attribute name="attrs">{'invisible' : [('type', '=', 'aeroo')]}</attribute>
+        </group>
+        <group name="description_after" position="before">
+          <group attrs="{'invisible': [('type', '!=', 'aeroo')]}">
+            <label for="description_after" string="Description of the Modifications"/>
+          </group>
+        </group>
+        <page name="screenshots" position="attributes">
+          <attribute name="attrs">{'invisible' : [('type', '=', 'aeroo')]}
+          </attribute>
+        </page>
+      </field>
+    </record>
+
+  </data>
+</odoo>
