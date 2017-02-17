@@ -22,12 +22,12 @@
             </h1>
             <group name="main">
               <group>
-                <field name="type"/>
-                <field name="module_id" attrs="{'invisible': [('type', '!=', 'support')]}"/>
-                <field name="model_id" attrs="{'invisible': [('type', '=', 'support')]}"/>
+                <field name="type" attrs="{'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
+                <field name="module_id" attrs="{'invisible': [('type', '!=', 'support')], 'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
+                <field name="model_id" attrs="{'invisible': [('type', '=', 'support')], 'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
               </group>
               <group>
-                <field name="user_id"/>
+                <field name="user_id" attrs="{'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
                 <field name="priority" widget="priority"/>
               </group>
             </group>
@@ -36,7 +36,7 @@
                 <label for="description_before" string="Description of the Observed Behavior"/>
               </group>
               <group name="description_before" colspan="7">
-                <field name="description_before" nolabel="1"/>
+                <field name="description_before" nolabel="1" attrs="{'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
               </group>
             </group>
             <group col="8">
@@ -44,20 +44,20 @@
                 <label for="description_after" string="Description of the Desired Behavior"/>
               </group>
               <group name="description_after" colspan="7">
-                <field name="description_after" nolabel="1"/>
+                <field name="description_after" nolabel="1" attrs="{'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
               </group>
             </group>
             <notebook>
               <page name="screenshots" string="Screenshots">
-                <field name="screenshot_ids">
+                <field name="screenshot_ids" attrs="{'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}">
                   <tree editable="bottom">
                     <field name="filename" invisible="1"/>
-                    <field name="screenshot" widget="binary" filename="filename" />
+                    <field name="screenshot" widget="binary" filename="filename"/>
                     <field name="comment"/>
                   </tree>
                 </field>
                 <div>
-                  <field name="no_screenshot"/>
+                  <field name="no_screenshot" attrs="{'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
                   <em> I do not want to join a screenshot and understand that it may impact the processing of the request.</em>
                 </div>
               </page>
