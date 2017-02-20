@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <data noupdate="1">
+    <!--Email template -->
+    <record id="email_template_standard_plus_issue_aeroo" model="mail.template">
+      <field name="email_from">${(object.user_id.email or object.user_id.company_id.email)|safe}</field>
+      <field name="subject">[${object.user_id.company_id.name}] | ${object.name} | Request: ${object.type} | Priority: ${object.priority}</field>
+      <field name="model_id" ref="standard_plus_issue_aeroo.model_standard_plus_issue"/>
+      <field name="auto_delete" eval="True"/>
+      <field name="body_html"><![CDATA[
+        <h3>Request ${object.name}</h3>
+        <p>
+          A request of type <strong>${object.type}</strong> for project ${object.user_id.company_id.name} has been submitted by ${(object.user_id.name)} with a level '${object.priority}' priority.
+        </p>
+        <p>
+          <strong>Concerned model:</strong>
+          % if object.model_id.model:
+            ${object.model_id.model}
+          % else:
+            left blank
+          % endif
+        </p>
+        <p>
+          <strong>Report Name:</strong> ${object.report_name}
+        </p>
+        <p>
+          <strong>Output Format:</strong> ${object.report_out_format}
+        </p>
+        % if object.report_source == 'lang':
+          <p>
+            <strong>Languages:</strong>
+            % for report in object.report_line_ids:
+                <br>
+                <strong>${report.filename}:</strong> ${report.lang_id.name}
+            % endfor
+          </p>
+          <p>
+            <strong>Language Determinant:</strong> ${object.report_lang_determinant}
+          </p>
+         % endif
+        <p>
+          <strong>Description of the modifications:</strong>
+          <br>
+          % if object.description_after:
+            ${object.description_after}
+          % else:
+            left blank
+          % endif
+        </p>
+        <p>
+          ${object.issue_url}
+        </p>
+        ]]></field>
+    </record>
+  </data>
+
+</odoo>
