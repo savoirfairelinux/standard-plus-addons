@@ -13,6 +13,7 @@
     'summary': 'Standard+ Issue Aeroo',
     'depends': [
         'standard_plus_issue',
+        'report_aeroo',
     ],
     'external_dependencies': {
         'python': [],
