@@ -7,9 +7,7 @@ from odoo.exceptions import ValidationError
 
 
 class StandardPlusIssue(models.Model):
-    """
-    Standard+ Issue
-    """
+    """Standard+ Issue"""
     _name = 'standard.plus.issue'
     _description = __doc__
     _inherit = ['mail.thread']

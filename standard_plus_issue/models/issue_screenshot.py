@@ -6,9 +6,7 @@ from odoo import fields, models
 
 
 class IssueScreenshot(models.Model):
-    """
-    Issue Screenshot
-    """
+    """Issue Screenshot"""
     _name = 'issue.screenshot'
 
     screenshot = fields.Binary(
