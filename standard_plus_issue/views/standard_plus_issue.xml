@@ -97,6 +97,13 @@
       <field name="view_mode">tree,form</field>
     </record>
 
+    <record id="action_standard_plus_issue_systray" model="ir.actions.act_window">
+      <field name="name">Issues</field>
+      <field name="res_model">standard.plus.issue</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form</field>
+    </record>
+
     <menuitem id="menu_standard_plus_issue"
               parent="base.menu_custom"
               name="Standard+ Issue"
