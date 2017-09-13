@@ -33,7 +33,7 @@
             </group>
             <group col="8">
               <group colspan="1" attrs="{'invisible': [('type', '!=', 'support')]}">
-                <label for="description_before" string="Description of the Observed Behavior"/>
+                <label for="description_before"/>
               </group>
               <group name="description_before" colspan="7">
                 <field name="description_before" nolabel="1" attrs="{'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
@@ -41,7 +41,7 @@
             </group>
             <group col="8">
               <group colspan="1" attrs="{'invisible': [('type', '!=', 'support')]}">
-                <label for="description_after" string="Description of the Desired Behavior"/>
+                <label for="description_after"/>
               </group>
               <group name="description_after" colspan="7">
                 <field name="description_after" nolabel="1" attrs="{'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
