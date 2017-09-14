@@ -4,6 +4,7 @@
 
     <!--Email template -->
     <record id="email_template_standard_plus_issue_studio" model="mail.template">
+      <field name="name">Standard+ Issue Studio</field>
       <field name="email_from">${(object.user_id.email or object.user_id.company_id.email)|safe}</field>
       <field name="subject">[${object.user_id.company_id.name}] | ${object.name} | Request: ${object.type} | Priority: ${object.priority}</field>
       <field name="model_id" ref="standard_plus_issue_studio.model_standard_plus_issue"/>

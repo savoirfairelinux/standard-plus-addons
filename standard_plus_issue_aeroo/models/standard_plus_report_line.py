@@ -6,9 +6,7 @@ from odoo import fields, models
 
 
 class StandardPlusReportLine(models.Model):
-    """
-    Standard+ Issue Report Line
-    """
+    """Standard+ Issue Report Line"""
     _name = 'standard.plus.report.line'
     _description = __doc__
 
