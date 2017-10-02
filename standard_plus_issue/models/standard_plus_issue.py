@@ -19,6 +19,7 @@ class StandardPlusIssue(models.Model):
 
     state = fields.Selection(
         string='State',
+        track_visibility='onchange',
         selection=[
             ('draft', 'Draft'),
             ('escalated', 'Escalated'),
@@ -153,6 +154,9 @@ class StandardPlusIssue(models.Model):
         self.ensure_one()
         self.send_by_email(self.prepare_mail_attachments(), template_ref)
         self.state = 'submitted'
+        self.message_post(
+            body=_('Email sent to ') + self.property_support_email,
+            subject=None, message_type='notification')
 
     @api.multi
     def action_set_addressed(self):
