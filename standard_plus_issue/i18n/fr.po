@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-26 21:51-0500\n"
-"PO-Revision-Date: 2017-01-26 21:55-0500\n"
-"Last-Translator: Julie Moussu <julie.moussu@savoirfairelinux.com>\n"
+"POT-Creation-Date: 2017-10-05 15:20-0400\n"
+"PO-Revision-Date: 2017-10-05 15:20-0400\n"
+"Last-Translator: istvan Szalai <istvan.szalai@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -73,10 +73,9 @@ msgstr ""
 "\n"
 "<h3>Demande ${object.name}</h3>\n"
 "        <p>\n"
-"          Une demande de type <strong>${object.type}</strong> concernant "
-"le projet ${object.user_id.company_id.name} a été effectuée par "
-"l'utilisateur ${(object.user_id.name)} avec une priorité de niveau ${object."
-"priority}.\n"
+"          Une demande de type <strong>${object.type}</strong> concernant le "
+"projet ${object.user_id.company_id.name} a été effectuée par l'utilisateur "
+"${(object.user_id.name)} avec une priorité de niveau ${object.priority}.\n"
 "        </p>\n"
 "        <p>\n"
 "          <strong>Module concerné:</strong>\n"
@@ -121,17 +120,6 @@ msgstr ""
 "        "
 
 #. module: standard_plus_issue
-#: model:ir.model,name:standard_plus_issue.model_standard_plus_issue
-msgid ""
-"\n"
-"    Standard+ Issue\n"
-"    "
-msgstr ""
-"\n"
-"    Standard+ Issue\n"
-"    "
-
-#. module: standard_plus_issue
 #: model:ir.ui.view,arch_db:standard_plus_issue.standard_plus_issue_form
 msgid ""
 "<em> I do not want to join a screenshot and understand that it may impact "
@@ -152,21 +140,23 @@ msgstr "Commentaire"
 
 #. module: standard_plus_issue
 #: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_create_uid
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Créé par"
 
 #. module: standard_plus_issue
 #: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_create_date
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_create_date
 msgid "Created on"
-msgstr ""
+msgstr "Créé le"
 
 #. module: standard_plus_issue
-#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_desired_behavior
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_description_after
 msgid "Description of the Desired Behavior"
 msgstr "Description du comportement désiré"
 
 #. module: standard_plus_issue
-#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_observed_behavior
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_description_before
 msgid "Description of the Observed Behavior"
 msgstr "Description du comportement observé"
 
@@ -174,12 +164,18 @@ msgstr "Description du comportement observé"
 #: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_display_name
 #: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nom d'affichage"
 
 #. module: standard_plus_issue
 #: selection:standard.plus.issue,state:0
 msgid "Draft"
 msgstr "Brouillon"
+
+#. module: standard_plus_issue
+#: code:addons/standard_plus_issue/models/standard_plus_issue.py:158
+#, python-format
+msgid "Email sent to "
+msgstr "Courriel envoyé à "
 
 #. module: standard_plus_issue
 #: selection:standard.plus.issue,state:0
@@ -198,15 +194,19 @@ msgstr "Élevée"
 
 #. module: standard_plus_issue
 #: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_id
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: standard_plus_issue
 #: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_issue_id
 msgid "Issue id"
-msgstr ""
+msgstr "Numéro de ticket"
 
 #. module: standard_plus_issue
+#: model:ir.actions.act_window,name:standard_plus_issue.action_standard_plus_issue
+#: model:ir.actions.act_window,name:standard_plus_issue.action_standard_plus_issue_systray
+#: model:ir.ui.menu,name:standard_plus_issue.menu_standard_plus_issue_sub
 #: model:ir.ui.view,arch_db:standard_plus_issue.standard_plus_issue_tree
 msgid "Issues"
 msgstr "Demandes"
@@ -215,17 +215,19 @@ msgstr "Demandes"
 #: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot___last_update
 #: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue___last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Dernière modification le"
 
 #. module: standard_plus_issue
 #: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_write_uid
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Dernière mise à jour par"
 
 #. module: standard_plus_issue
 #: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_write_date
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Dernière mise à jour le"
 
 #. module: standard_plus_issue
 #: selection:standard.plus.issue,priority:0
@@ -269,7 +271,7 @@ msgid "Object"
 msgstr "Objet"
 
 #. module: standard_plus_issue
-#: code:addons/standard_plus_issue/models/standard_plus_issue.py:113
+#: code:addons/standard_plus_issue/models/standard_plus_issue.py:122
 #, python-format
 msgid "Please join a screenshot."
 msgstr "Veuillez joindre une capture d'écran."
@@ -301,6 +303,8 @@ msgid "Screenshots"
 msgstr "Captures d'écran"
 
 #. module: standard_plus_issue
+#: model:ir.model,name:standard_plus_issue.model_standard_plus_issue
+#: model:ir.ui.menu,name:standard_plus_issue.menu_standard_plus_issue
 #: model:ir.ui.view,arch_db:standard_plus_issue.standard_plus_issue_form
 msgid "Standard+ Issue"
 msgstr "Demande Standard+"
@@ -321,7 +325,10 @@ msgid "Submitted"
 msgstr "Soumis"
 
 #. module: standard_plus_issue
+#. openerp-web
+#: code:addons/standard_plus_issue/static/src/xml/systray.xml:6
 #: selection:standard.plus.issue,type:0
+#, python-format
 msgid "Support"
 msgstr "Support"
 
@@ -360,11 +367,6 @@ msgstr ""
 "type} | Priorité: ${object.priority}"
 
 #. module: standard_plus_issue
-#: model:ir.model,name:standard_plus_issue.model_ir_attachment
-msgid "ir.attachment"
-msgstr ""
-
-#. module: standard_plus_issue
 #: model:ir.model,name:standard_plus_issue.model_issue_screenshot
 msgid "issue.screenshot"
-msgstr ""
+msgstr "issue.screenshot"
