@@ -16,8 +16,8 @@
         </p>
         <p>
           <strong>Concerned module:</strong>
-          % if object.module_id.name:
-            ${object.module_id.name}
+          % if object.module_id.shortdesc:
+            ${object.module_id.shortdesc}
           % else:
             left blank
           % endif
