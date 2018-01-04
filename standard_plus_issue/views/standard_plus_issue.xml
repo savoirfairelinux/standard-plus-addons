@@ -23,6 +23,7 @@
             <group name="main">
               <group>
                 <field name="type" attrs="{'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
+                <field name="support_type_id" attrs="{'invisible': [('type', '!=', 'support')],'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
                 <field name="module_id" attrs="{'invisible': [('type', '!=', 'support')], 'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
                 <field name="model_id" attrs="{'invisible': [('type', '=', 'support')], 'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
               </group>
