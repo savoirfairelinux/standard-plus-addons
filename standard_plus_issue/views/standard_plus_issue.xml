@@ -8,9 +8,9 @@
       <field name="arch" type="xml">
         <form string="Standard+ Issue">
           <header>
-            <button name="action_set_escalated" type="object" string="Submit"
+            <button name="action_set_escalated" type="object" string="Escalate"
                     attrs="{'invisible': ['|', ('state', '!=', 'draft'), ('type', '!=', 'support')]}"/>
-            <button name="action_set_submitted" type="object" string="Submit"
+            <button name="action_set_submitted" type="object" string="Submit" groups="standard_plus_issue.group_issue_coordinator"
                     attrs="{'invisible': ['|', '&amp;', ('state', '!=', 'draft'), ('type', '!=', 'support'), '&amp;', ('state', '!=', 'escalated'), ('type', '=', 'support')]}"/>
             <button name="action_set_rejected" type="object" string="Mark Rejected" states="submitted"/>
             <button name="action_set_addressed" type="object" string="Mark Solved" states="submitted"/>
@@ -104,14 +104,11 @@
       <field name="view_mode">form</field>
     </record>
 
-    <menuitem id="menu_standard_plus_issue"
-              parent="base.menu_custom"
-              name="Standard+ Issue"
-              sequence="16"/>
-
-    <menuitem id="menu_standard_plus_issue_sub"
-              parent="menu_standard_plus_issue"
-              action="action_standard_plus_issue"/>
+    <menuitem id="menu_support"
+        name="Support"
+        action="action_standard_plus_issue"
+        web_icon="standard_plus_issue,static/description/icon.png"
+        sequence="309"/>
 
   </data>
 </odoo>

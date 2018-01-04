@@ -12,6 +12,7 @@ Contributors
 * Julie Moussu (julie.moussu@savoirfairelinux.com)
 * Joao Alfredo Gama Batista (joao.gama@savoirfairelinux.com)
 * Quentin Lavallée (quentin.lavallee@savoirfairelinux.com)
+* Istvan Szalai (istvan.szalai@savoirfairelinux.com)
 
 More information
 ----------------

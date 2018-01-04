@@ -9,7 +9,7 @@
     'maintainer': 'Savoir-faire Linux',
     'website': 'http://www.savoirfairelinux.com',
     'license': 'LGPL-3',
-    'category': 'Helpdesk',
+    'category': 'Support',
     'summary': 'Standard+ Issue Studio',
     'depends': [
         'standard_plus_issue',
