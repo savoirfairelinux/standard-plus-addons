@@ -96,11 +96,6 @@ class StandardPlusIssue(models.Model):
         string='Notes',
     )
 
-    property_support_email = fields.Char(
-        string='Support Email Address',
-        company_dependent=True,
-    )
-
     issue_url = fields.Char(
         string='URL of the Issue',
         compute='_compute_issue_url',
@@ -161,7 +156,9 @@ class StandardPlusIssue(models.Model):
         self.send_by_email(self.prepare_mail_attachments(), template_ref)
         self.state = 'submitted'
         self.message_post(
-            body=_('Email sent to ') + self.property_support_email,
+            body=_('Email sent to ') + (
+                self.env['ir.config_parameter'].sudo().get_param(
+                    'property_support_email')),
             subject=None, message_type='notification')
 
     @api.multi
@@ -189,7 +186,10 @@ class StandardPlusIssue(models.Model):
         template = self.env.ref(template_ref)
         vals = {
             'attachment_ids': attachment_ids,
-            'email_to': self.property_support_email,
+            'email_to': (
+                self.env['ir.config_parameter'].sudo().get_param(
+                    'property_support_email')
+                )
         }
         template.send_mail(self.id, force_send=True, email_values=vals)
         self.env['ir.attachment'].browse(attachment_ids).unlink()

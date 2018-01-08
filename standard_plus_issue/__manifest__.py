@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# © 2017 Savoir-faire Linux
+# © 2017-2018 Savoir-faire Linux
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 {
@@ -12,6 +12,7 @@
     'category': 'Helpdesk',
     'summary': 'Standard+ Issue',
     'depends': [
+        'base_setup',
         'web',
         'document',
         'mail',
@@ -20,7 +21,7 @@
         'python': [],
     },
     'data': [
-        'data/ir_property_support_email.xml',
+        'data/ir_config_parameter.xml',
         'data/standard_plus_issue_sequence.xml',
         'data/template_email_standard_plus_issue.xml',
         'data/standard_plus_issue_support_type.xml',
@@ -28,6 +29,7 @@
         'security/ir.model.access.csv',
         'views/standard_plus_issue_templates.xml',
         'views/standard_plus_issue.xml',
+        'views/base_config_settings.xml',
     ],
     'images': [
         'static/img/sfl_logo.png',
