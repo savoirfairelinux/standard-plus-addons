@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="issue_support_type_evolution" model="issue.support.type">
+      <field name="name">Evolution</field>
+      <field name="sequence">1</field>
+      <field name="description">Evolution</field>
+    </record>
+
+    <record id="issue_support_type_anomaly" model="issue.support.type">
+      <field name="name">Anomaly</field>
+      <field name="sequence">2</field>
+      <field name="description">Anomaly</field>
+    </record>
+
+    <record id="issue_support_type_help" model="issue.support.type">
+      <field name="name">Ask for help</field>
+      <field name="sequence">3</field>
+      <field name="description">Ask for help</field>
+    </record>
+
+  </data>
+</odoo>

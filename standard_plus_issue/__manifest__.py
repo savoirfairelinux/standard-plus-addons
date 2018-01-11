@@ -23,6 +23,7 @@
         'data/ir_property_support_email.xml',
         'data/standard_plus_issue_sequence.xml',
         'data/template_email_standard_plus_issue.xml',
+        'data/standard_plus_issue_support_type.xml',
         'security/res_groups.xml',
         'security/ir.model.access.csv',
         'views/standard_plus_issue_templates.xml',

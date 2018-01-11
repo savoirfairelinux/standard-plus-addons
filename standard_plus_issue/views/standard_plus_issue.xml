@@ -23,6 +23,7 @@
             <group name="main">
               <group>
                 <field name="type" attrs="{'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
+                <field name="support_type_id" attrs="{'invisible': [('type', '!=', 'support')],'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
                 <field name="module_id" attrs="{'invisible': [('type', '!=', 'support')], 'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
                 <field name="model_id" attrs="{'invisible': [('type', '=', 'support')], 'readonly': [('state', 'in', ['submitted', 'addressed', 'rejected'])]}"/>
               </group>
@@ -104,11 +105,55 @@
       <field name="view_mode">form</field>
     </record>
 
+    <record id="issue_support_type_form" model="ir.ui.view">
+      <field name="name">issue.support.type.form</field>
+      <field name="model">issue.support.type</field>
+      <field name="arch" type="xml">
+        <form string="Support types">
+          <group>
+            <field name="name"/>
+            <field name="sequence"/>
+            <field name="active"/>
+            <field name="description"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record id="issue_support_type_tree" model="ir.ui.view">
+      <field name="name">issue.support.type.tree</field>
+      <field name="model">issue.support.type</field>
+      <field name="arch" type="xml">
+        <tree string="Support types">
+          <field name="name"/>
+          <field name="sequence"/>
+          <field name="description"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="action_standard_plus_issue_support_type" model="ir.actions.act_window">
+      <field name="name">Support type</field>
+      <field name="res_model">issue.support.type</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
     <menuitem id="menu_support"
         name="Support"
         action="action_standard_plus_issue"
         web_icon="standard_plus_issue,static/description/icon.png"
         sequence="309"/>
+
+    <menuitem id="menu_configuration_standard_plus_issue"
+        name="Configuration"
+        parent="menu_support"/>
+
+    <menuitem id="menu_configuration_support_type"
+        name="Support Type"
+        parent="menu_configuration_standard_plus_issue"
+        action="action_standard_plus_issue_support_type"
+    />
 
   </data>
 </odoo>

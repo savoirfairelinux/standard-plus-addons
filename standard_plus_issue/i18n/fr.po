@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-05 15:20-0400\n"
-"PO-Revision-Date: 2017-10-05 15:20-0400\n"
-"Last-Translator: istvan Szalai <istvan.szalai@savoirfairelinux.com>\n"
+"POT-Creation-Date: 2018-01-11 11:17-0500\n"
+"PO-Revision-Date: 2018-01-11 11:21-0500\n"
+"Last-Translator: Rim BEN DHAOU <rim.bendhaou@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -29,8 +29,8 @@ msgid ""
 "        </p>\n"
 "        <p>\n"
 "          <strong>Concerned module:</strong>\n"
-"          % if object.module_id.name:\n"
-"            ${object.module_id.name}\n"
+"          % if object.module_id.shortdesc:\n"
+"            ${object.module_id.shortdesc}\n"
 "          % else:\n"
 "            left blank\n"
 "          % endif\n"
@@ -70,54 +70,6 @@ msgid ""
 "        </p>\n"
 "        "
 msgstr ""
-"\n"
-"<h3>Demande ${object.name}</h3>\n"
-"        <p>\n"
-"          Une demande de type <strong>${object.type}</strong> concernant le "
-"projet ${object.user_id.company_id.name} a été effectuée par l'utilisateur "
-"${(object.user_id.name)} avec une priorité de niveau ${object.priority}.\n"
-"        </p>\n"
-"        <p>\n"
-"          <strong>Module concerné:</strong>\n"
-"          % if object.module_id.name:\n"
-"          ${object.module_id.name}\n"
-"          % else:\n"
-"          non renseigné\n"
-"          % endif\n"
-"        </p>\n"
-"        <p>\n"
-"          <strong>Description du comportement observé:</strong>\n"
-"          <br>\n"
-"          % if object.description_before:\n"
-"          ${object.description_before}\n"
-"          % else:\n"
-"          non renseigné\n"
-"          % endif\n"
-"        </p>\n"
-"        <p>\n"
-"          <strong>Description du comportement désiré:</strong>\n"
-"          <br>\n"
-"          % if object.description_after:\n"
-"          ${object.description_after}\n"
-"          % else:\n"
-"          non renseigné\n"
-"          % endif\n"
-"        </p>\n"
-"<p>\n"
-"        % if object.screenshot_ids:\n"
-"        <strong>Notes additionnelles:</strong>\n"
-"        % for screenshot in object.screenshot_ids:\n"
-"          % if screenshot.comment:\n"
-"          <br>\n"
-"          <strong>${screenshot.filename}:</strong> ${screenshot.comment}\n"
-"          % endif\n"
-"       % endfor\n"
-"       % endif\n"
-"        </p>\n"
-"        <p>\n"
-"           ${object.issue_url}\n"
-"        </p>\n"
-"        "
 
 #. module: standard_plus_issue
 #: model:ir.ui.view,arch_db:standard_plus_issue.standard_plus_issue_form
@@ -127,6 +79,11 @@ msgid ""
 msgstr ""
 "<em> Je ne désire pas joindre de capture d'écran et comprends que cela "
 "pourra impacter le traitement de la demande.</em>"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_support_type_active
+msgid "Active"
+msgstr "Actif"
 
 #. module: standard_plus_issue
 #: selection:standard.plus.issue,state:0
@@ -139,21 +96,33 @@ msgid "Comment"
 msgstr "Commentaire"
 
 #. module: standard_plus_issue
+#: model:ir.ui.menu,name:standard_plus_issue.menu_configuration_standard_plus_issue
+msgid "Configuration"
+msgstr "Configuration"
+
+#. module: standard_plus_issue
 #: model:res.groups,name:standard_plus_issue.group_issue_coordinator
 msgid "Coordinator"
 msgstr "Coordinateur"
 
 #. module: standard_plus_issue
 #: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_create_uid
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_support_type_create_uid
 #: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_create_uid
 msgid "Created by"
 msgstr "Créé par"
 
 #. module: standard_plus_issue
 #: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_create_date
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_support_type_create_date
 #: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_create_date
 msgid "Created on"
 msgstr "Créé le"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_support_type_description
+msgid "Description"
+msgstr "Description"
 
 #. module: standard_plus_issue
 #: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_description_after
@@ -167,6 +136,7 @@ msgstr "Description du comportement observé"
 
 #. module: standard_plus_issue
 #: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_display_name
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_support_type_display_name
 #: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_display_name
 msgid "Display Name"
 msgstr "Nom d'affichage"
@@ -177,14 +147,15 @@ msgid "Draft"
 msgstr "Brouillon"
 
 #. module: standard_plus_issue
-#: model:ir.ui.view,arch_db:standard_plus_issue.standard_plus_issue_form
-msgid "Escalate"
-msgstr "Escalader"
-
-#: code:addons/standard_plus_issue/models/standard_plus_issue.py:158
+#: code:addons/standard_plus_issue/models/standard_plus_issue.py:164
 #, python-format
 msgid "Email sent to "
 msgstr "Courriel envoyé à "
+
+#. module: standard_plus_issue
+#: model:ir.ui.view,arch_db:standard_plus_issue.standard_plus_issue_form
+msgid "Escalate"
+msgstr "Escalader"
 
 #. module: standard_plus_issue
 #: selection:standard.plus.issue,state:0
@@ -208,6 +179,7 @@ msgstr "Élevée"
 
 #. module: standard_plus_issue
 #: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_id
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_support_type_id
 #: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_id
 msgid "ID"
 msgstr "ID"
@@ -220,25 +192,27 @@ msgstr "Numéro de ticket"
 #. module: standard_plus_issue
 #: model:ir.actions.act_window,name:standard_plus_issue.action_standard_plus_issue
 #: model:ir.actions.act_window,name:standard_plus_issue.action_standard_plus_issue_systray
-#: model:ir.ui.menu,name:standard_plus_issue.menu_standard_plus_issue_sub
 #: model:ir.ui.view,arch_db:standard_plus_issue.standard_plus_issue_tree
 msgid "Issues"
 msgstr "Demandes"
 
 #. module: standard_plus_issue
 #: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot___last_update
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_support_type___last_update
 #: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue___last_update
 msgid "Last Modified on"
 msgstr "Dernière modification le"
 
 #. module: standard_plus_issue
 #: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_write_uid
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_support_type_write_uid
 #: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_write_uid
 msgid "Last Updated by"
 msgstr "Dernière mise à jour par"
 
 #. module: standard_plus_issue
 #: model:ir.model.fields,field_description:standard_plus_issue.field_issue_screenshot_write_date
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_support_type_write_date
 #: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_write_date
 msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
@@ -285,7 +259,7 @@ msgid "Object"
 msgstr "Objet"
 
 #. module: standard_plus_issue
-#: code:addons/standard_plus_issue/models/standard_plus_issue.py:122
+#: code:addons/standard_plus_issue/models/standard_plus_issue.py:128
 #, python-format
 msgid "Please join a screenshot."
 msgstr "Veuillez joindre une capture d'écran."
@@ -317,11 +291,20 @@ msgid "Screenshots"
 msgstr "Captures d'écran"
 
 #. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_support_type_sequence
+msgid "Sequence"
+msgstr "Séquence"
+
+#. module: standard_plus_issue
 #: model:ir.model,name:standard_plus_issue.model_standard_plus_issue
-#: model:ir.ui.menu,name:standard_plus_issue.menu_standard_plus_issue
 #: model:ir.ui.view,arch_db:standard_plus_issue.standard_plus_issue_form
 msgid "Standard+ Issue"
 msgstr "Demande Standard+"
+
+#. module: standard_plus_issue
+#: model:ir.model,name:standard_plus_issue.model_issue_support_type
+msgid "Standard+ Issue Support Type"
+msgstr "Type du support des demandes Standard+"
 
 #. module: standard_plus_issue
 #: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_state
@@ -352,6 +335,28 @@ msgstr "Support"
 #: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_property_support_email
 msgid "Support Email Address"
 msgstr "Adresse couriel du support"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_support_type_id
+#: model:ir.ui.menu,name:standard_plus_issue.menu_configuration_support_type
+msgid "Support Type"
+msgstr "Type du support"
+
+#. module: standard_plus_issue
+#: sql_constraint:issue.support.type:0
+msgid "Support Type must be unique."
+msgstr "Type du support doit être unique"
+
+#. module: standard_plus_issue
+#: model:ir.actions.act_window,name:standard_plus_issue.action_standard_plus_issue_support_type
+msgid "Support type"
+msgstr "Type du support"
+
+#. module: standard_plus_issue
+#: model:ir.ui.view,arch_db:standard_plus_issue.issue_support_type_form
+#: model:ir.ui.view,arch_db:standard_plus_issue.issue_support_type_tree
+msgid "Support types"
+msgstr "Types du support"
 
 #. module: standard_plus_issue
 #: model:ir.model.fields,field_description:standard_plus_issue.field_standard_plus_issue_type
@@ -387,3 +392,109 @@ msgstr ""
 #: model:ir.model,name:standard_plus_issue.model_issue_screenshot
 msgid "issue.screenshot"
 msgstr "issue.screenshot"
+
+#. module: standard_plus_issue
+#: model:ir.model.fields,field_description:standard_plus_issue.field_issue_support_type_name
+msgid "name"
+msgstr "Nom"
+
+#~ msgid ""
+#~ "\n"
+#~ "        <h3>Request ${object.name}</h3>\n"
+#~ "        <p>\n"
+#~ "          A request of type <strong>${object.type}</strong> for project "
+#~ "${object.user_id.company_id.name} has been submitted by ${(object.user_id."
+#~ "name)} with a level '${object.priority}' priority.\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          <strong>Concerned module:</strong>\n"
+#~ "          % if object.module_id.name:\n"
+#~ "            ${object.module_id.name}\n"
+#~ "          % else:\n"
+#~ "            left blank\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          <strong>Description of the observed behavior:</strong>\n"
+#~ "          <br>\n"
+#~ "          % if object.description_before:\n"
+#~ "            ${object.description_before}\n"
+#~ "          % else:\n"
+#~ "            left blank\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          <strong>Description of the desired behavior:</strong>\n"
+#~ "          <br>\n"
+#~ "          % if object.description_after:\n"
+#~ "            ${object.description_after}\n"
+#~ "          % else:\n"
+#~ "            left blank\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          % if object.screenshot_ids:\n"
+#~ "            <strong>Additional notes:</strong>\n"
+#~ "            % for screenshot in object.screenshot_ids:\n"
+#~ "              % if screenshot.comment:\n"
+#~ "                <br>\n"
+#~ "                <strong>${screenshot.filename}:</strong> ${screenshot."
+#~ "comment}\n"
+#~ "              % endif\n"
+#~ "            % endfor\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          ${object.issue_url}\n"
+#~ "        </p>\n"
+#~ "        "
+#~ msgstr ""
+#~ "\n"
+#~ "<h3>Demande ${object.name}</h3>\n"
+#~ "        <p>\n"
+#~ "          Une demande de type <strong>${object.type}</strong> concernant "
+#~ "le projet ${object.user_id.company_id.name} a été effectuée par "
+#~ "l'utilisateur ${(object.user_id.name)} avec une priorité de niveau "
+#~ "${object.priority}.\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          <strong>Module concerné:</strong>\n"
+#~ "          % if object.module_id.name:\n"
+#~ "          ${object.module_id.name}\n"
+#~ "          % else:\n"
+#~ "          non renseigné\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          <strong>Description du comportement observé:</strong>\n"
+#~ "          <br>\n"
+#~ "          % if object.description_before:\n"
+#~ "          ${object.description_before}\n"
+#~ "          % else:\n"
+#~ "          non renseigné\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "          <strong>Description du comportement désiré:</strong>\n"
+#~ "          <br>\n"
+#~ "          % if object.description_after:\n"
+#~ "          ${object.description_after}\n"
+#~ "          % else:\n"
+#~ "          non renseigné\n"
+#~ "          % endif\n"
+#~ "        </p>\n"
+#~ "<p>\n"
+#~ "        % if object.screenshot_ids:\n"
+#~ "        <strong>Notes additionnelles:</strong>\n"
+#~ "        % for screenshot in object.screenshot_ids:\n"
+#~ "          % if screenshot.comment:\n"
+#~ "          <br>\n"
+#~ "          <strong>${screenshot.filename}:</strong> ${screenshot.comment}\n"
+#~ "          % endif\n"
+#~ "       % endfor\n"
+#~ "       % endif\n"
+#~ "        </p>\n"
+#~ "        <p>\n"
+#~ "           ${object.issue_url}\n"
+#~ "        </p>\n"
+#~ "        "
