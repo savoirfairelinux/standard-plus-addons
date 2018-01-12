@@ -5,3 +5,4 @@
 from . import standard_plus_issue
 from . import issue_screenshot
 from . import issue_support_type
+from . import base_config_settings

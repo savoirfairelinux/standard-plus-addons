@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_support_email_res_config" model="ir.ui.view">
+            <field name="name">base.config.settings.support.email</field>
+            <field name="model">base.config.settings</field>
+            <field name="inherit_id" ref="base_setup.view_general_configuration"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='authentication']" position="after">
+                    <group name="Support">
+                        <label for="id" string="Support Email"/>
+                        <div>
+                            <div>
+                                <field name="property_support_email"/>
+                            </div>
+                        </div>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
