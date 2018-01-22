@@ -17,6 +17,7 @@ class TestStandardPlusIssue(TransactionCase):
         self.IssueObj = self.env['standard.plus.issue']
         self.ReportLineObj = self.env['standard.plus.report.line']
         self.AttachmentObj = self.env['ir.attachment']
+        self.support_type = self.env.ref('standard_plus_issue.issue_support_type_evolution')
 
         here = os.path.abspath(os.path.dirname(__file__))
         report_path = os.path.join(here, "test_report.odt")
@@ -34,6 +35,7 @@ class TestStandardPlusIssue(TransactionCase):
             'no_screenshot': True,
             'report_line_ids': [(6, 0, [self.report.id])],
             'report_source': 'lang',
+            'support_type_id': self.support_type.id,
         })
 
     def test_check_screenshots(self):

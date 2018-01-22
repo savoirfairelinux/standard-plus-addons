@@ -17,6 +17,7 @@ class TestStandardPlusIssue(TransactionCase):
         self.IssueObj = self.env['standard.plus.issue']
         self.ScreenshotObj = self.env['issue.screenshot']
         self.AttachmentObj = self.env['ir.attachment']
+        self.support_type = self.env.ref('standard_plus_issue.issue_support_type_evolution')
 
         here = os.path.abspath(os.path.dirname(__file__))
         image_path = os.path.join(here, "../static/img/test_image.png")
@@ -30,6 +31,7 @@ class TestStandardPlusIssue(TransactionCase):
 
         self.issue = self.IssueObj.create({
             'screenshot_ids': [(6, 0, [self.screenshot.id])],
+            'support_type_id': self.support_type.id,
         })
 
     def test_compute_issue_url(self):
@@ -51,6 +53,7 @@ class TestStandardPlusIssue(TransactionCase):
     def test_name(self):
         issue2 = self.IssueObj.create({
             'no_screenshot': True,
+            'support_type_id': self.support_type.id,
         })
         self.assertEqual(
             (issue2.name[:2], int(issue2.name[2:5])),
