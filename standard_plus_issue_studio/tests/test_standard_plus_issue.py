@@ -14,10 +14,12 @@ class TestStandardPlusIssue(TransactionCase):
         self.IssueObj = self.env['standard.plus.issue']
         self.DataObj = self.env['ir.model.data']
         self.AttachmentObj = self.env['ir.attachment']
+        self.support_type = self.env.ref('standard_plus_issue.issue_support_type_evolution')
 
         self.issue = self.IssueObj.create({
             'no_screenshot': True,
             'type': 'studio',
+            'support_type_id': self.support_type.id,
         })
 
         self.studio_custom_data = self.DataObj.create({
