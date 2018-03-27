@@ -44,7 +44,6 @@ class StandardPlusIssue(models.Model):
     support_type_id = fields.Many2one(
         string='Support Type',
         comodel_name='issue.support.type',
-        required=True,
     )
 
     module_id = fields.Many2one(
