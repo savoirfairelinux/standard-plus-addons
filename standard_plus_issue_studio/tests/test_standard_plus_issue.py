@@ -36,7 +36,7 @@ class TestStandardPlusIssue(TransactionCase):
         self.assertFalse(self.issue.studio_retrieval_date)
         self.issue.action_set_submitted()
         self.assertTrue(self.issue.studio_module)
-        assert self.issue.studio_retrieval_date
+        self.assertTrue(self.issue.studio_retrieval_date)
         self.assertEqual(self.issue.state, 'submitted')
         self.assertEqual(
             attachment_count, self.AttachmentObj.search_count([])
