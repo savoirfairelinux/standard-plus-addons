@@ -33,11 +33,10 @@ class TestStandardPlusIssue(TransactionCase):
     def test_action_set_submitted(self):
         attachment_count = self.AttachmentObj.search_count([])
         self.assertEqual(self.issue.state, 'draft')
+        self.assertFalse(self.issue.studio_retrieval_date)
         self.issue.action_set_submitted()
         self.assertTrue(self.issue.studio_module)
-        self.assertEqual(
-            self.issue.studio_retrieval_date[:-2], fields.Datetime.now()[:-2]
-        )
+        self.assertTrue(self.issue.studio_retrieval_date)
         self.assertEqual(self.issue.state, 'submitted')
         self.assertEqual(
             attachment_count, self.AttachmentObj.search_count([])
