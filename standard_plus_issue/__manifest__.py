@@ -4,7 +4,7 @@
 
 {
     'name': 'Standard+ Issue',
-    'version': '10.0.2.0.0',
+    'version': '11.0.1.0.0',
     'author': 'Savoir-faire Linux',
     'maintainer': 'Savoir-faire Linux',
     'website': 'http://www.savoirfairelinux.com',
@@ -29,7 +29,7 @@
         'security/ir.model.access.csv',
         'views/standard_plus_issue_templates.xml',
         'views/standard_plus_issue.xml',
-        'views/base_config_settings.xml',
+        'views/res_config_settings.xml',
     ],
     'images': [
         'static/img/sfl_logo.png',

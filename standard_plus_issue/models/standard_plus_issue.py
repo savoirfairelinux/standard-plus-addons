@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# © 2017 Savoir-faire Linux
+# © 2017-2018 Savoir-faire Linux
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 from odoo import _, api, fields, models
@@ -188,7 +188,7 @@ class StandardPlusIssue(models.Model):
             'email_to': (
                 self.env['ir.config_parameter'].sudo().get_param(
                     'property_support_email')
-                )
+            )
         }
         template.send_mail(self.id, force_send=True, email_values=vals)
         self.env['ir.attachment'].browse(attachment_ids).unlink()
