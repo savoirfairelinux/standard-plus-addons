@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# © 2017 Savoir-faire Linux
+# © 2017-2018 Savoir-faire Linux
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 import base64
@@ -62,10 +62,10 @@ class StandardPlusIssue(models.Model):
         self.ensure_one()
         studio_module = self.env['ir.module.module'].get_studio_module()
         data = self.env['ir.model.data'].search([('studio', '=', True)])
-        with tempfile.TemporaryFile('w+') as tf:
-             tf.write(export.generate_archive(studio_module, data))
-             tf.seek(0)
-             self.studio_module=base64.b64encode(tf.read())
+        with tempfile.TemporaryFile('wb+') as tf:
+            tf.write(export.generate_archive(studio_module, data))
+            tf.seek(0)
+            self.studio_module = base64.b64encode(tf.read())
         self.studio_retrieval_date = fields.Datetime.now()
 
     @api.multi
